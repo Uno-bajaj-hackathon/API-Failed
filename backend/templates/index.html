@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insurance Policy Eligibility</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Insurance Policy Eligibility Checker</h1>
+    <form id="queryForm" enctype="multipart/form-data">
+      <label for="query">Enter your query:</label>
+      <input type="text" id="query" name="query" required/>
+
+      <label>Upload policy documents (PDF/DOCX/EML):</label>
+      <div id="drop-area">
+        <p>Drag & drop files here or <span id="browse">browse</span></p>
+        <input type="file" id="files" name="files" multiple style="display:none;" accept=".pdf,.docx,.eml" />
+        <div id="file-list"></div>
+      </div>
+
+      <label for="llm-select">Select LLM API:</label>
+      <select id="llm-select" name="llm">
+        <option value="openai">OpenAI</option>
+        <option value="gemini">Gemini</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="results"></div>
+    <button id="downloadJson" style="display:none;">Download JSON</button>
+    <button id="downloadPdf" style="display:none;">Download PDF</button>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
